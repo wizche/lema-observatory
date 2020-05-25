@@ -1,0 +1,20 @@
+name: weather
+on:
+  schedule:
+    - cron:  '*/15 * * * *'
+
+jobs:
+  screenshot:
+    name: Screenshot
+    strategy:
+      matrix:
+        width: [1920, 1024]
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Screenshot Website
+      uses: swinton/screenshot-website@v1.x
+      with:
+        source: http://www.centrometeolombardo.com/moduli/stazioni.php?lema
+        destination: screenshot-${{ matrix.width }}.png
+        width: ${{ matrix.width }}
