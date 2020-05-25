@@ -27,16 +27,21 @@ jobs:
         destination: screenshot-${{ matrix.width }}.png
         width: ${{ matrix.width }}
         full-page: true
-
+  persist:
+    runs-on: ubuntu-latest
+    steps:
     - name: Download screenshot from last step
       uses: actions/download-artifact@v2
       with:
-        name: screenshot-${{ matrix.width }}
-        path: weather-screenshots/screenshot-${{ matrix.width }}.png
-        
+        name: screenshot-1920
+        path: weather-screenshots/screenshot-1920.png
+    - name: Download screenshot from last step
+      uses: actions/download-artifact@v2
+      with:
+        name: screenshot-1024
+        path: weather-screenshots/screenshot-1024.png 
     - name: Persist 
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Updated weather screenshots
         branch: master
-        push_options: '--force'
