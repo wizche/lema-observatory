@@ -9,7 +9,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  take:
     # The type of runner that the job will run on
     strategy:
       matrix:
@@ -33,8 +33,10 @@ jobs:
       with:
         name: screenshot-${{ matrix.width }}
         path: weather-screenshots/screenshot-${{ matrix.width }}.png
-
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Updated weather screenshots
-        branch: ${{ github.head_ref }}
+  persist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Updated weather screenshots
+          branch: ${{ github.head_ref }}
