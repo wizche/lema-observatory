@@ -36,12 +36,12 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: screenshot-1920
-        path: weather-screenshots/screenshot-1920.png
+        path: weather-screenshots/
     - name: Download screenshot from last step
       uses: actions/download-artifact@v2
       with:
         name: screenshot-1024
-        path: weather-screenshots/screenshot-1024.png 
+        path: weather-screenshots/
     - name: Persist 
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
