@@ -24,6 +24,7 @@ jobs:
         source: "http://www.centrometeolombardo.com/moduli/stazioni.php?lema"
         destination: screenshot-${{ matrix.width }}.png
         width: ${{ matrix.width }}
+        scaleFactor: 1
         full-page: true
   persist:
     runs-on: ubuntu-latest
