@@ -11,6 +11,9 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
+    strategy:
+      matrix:
+        width: [1920, 1024]
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -20,15 +23,17 @@ jobs:
     - uses: swinton/screenshot-website@v1.x
       with:
         source: "http://www.centrometeolombardo.com/moduli/stazioni.php?lema"
-        destination: screenshot.png
-        width: 1920
+        destination: screenshot-${{ matrix.width }}.png
+        width: ${{ matrix.width }}
+        scale-factor: 1
+        full-page: true
 
     - name: Download screenshot from last step
       uses: actions/download-artifact@v1
       with:
-        name: screenshot
+        name: screenshots
 
     - uses: stefanzweifel/git-auto-commit-action@v4.1.1
       with:
-        commit_message: Updated Screenshot
+        commit_message: Updated weather screenshots
         branch: ${{ github.head_ref }}
