@@ -20,18 +20,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: swinton/screenshot-website@v1.x
+    - name: Take screenshot
+      uses: swinton/screenshot-website@v1.x
       with:
         source: "http://www.centrometeolombardo.com/moduli/stazioni.php?lema"
-        destination: screenshot-${{ matrix.width }}.png
-        width: ${{ matrix.width }}
-        scale-factor: 1
-        full-page: true
+        destination: screenshot.png
 
     - name: Download screenshot from last step
       uses: actions/download-artifact@v1
       with:
-        name: screenshots
+        name: screenshot
 
     - uses: stefanzweifel/git-auto-commit-action@v4.1.1
       with:
