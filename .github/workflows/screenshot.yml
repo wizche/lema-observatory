@@ -30,6 +30,8 @@ jobs:
     needs: take
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
     - name: Download screenshot from last step
       uses: actions/download-artifact@v2
       with:
@@ -44,4 +46,3 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Updated weather screenshots
-        branch: master
