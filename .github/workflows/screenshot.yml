@@ -18,8 +18,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v2
-
     - name: Take screenshot
       uses: swinton/screenshot-website@v1.x
       with:
@@ -31,6 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: take
     steps:
+    - uses: actions/checkout@v2
     - name: Download screenshot from last step
       uses: actions/download-artifact@v2
       with:
