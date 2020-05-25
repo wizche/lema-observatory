@@ -31,7 +31,7 @@ jobs:
     - name: Download screenshot from last step
       uses: actions/download-artifact@v2
       with:
-        name: screenshot-${{ matrix.width }}.png
+        name: screenshot-${{ matrix.width }}
         path: weather-screenshots/screenshot-${{ matrix.width }}.png
 
     - uses: stefanzweifel/git-auto-commit-action@v4
