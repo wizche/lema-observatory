@@ -29,12 +29,12 @@ jobs:
         full-page: true
 
     - name: Download screenshot from last step
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v2
       with:
-        name: screenshots
-        path: screenshot-${{ matrix.width }}.png
+        name: screenshot-${{ matrix.width }}.png
+        path: weather-screenshots/screenshot-${{ matrix.width }}.png
 
-    - uses: stefanzweifel/git-auto-commit-action@v4.1.1
+    - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Updated weather screenshots
         branch: ${{ github.head_ref }}
