@@ -24,12 +24,15 @@ jobs:
       uses: swinton/screenshot-website@v1.x
       with:
         source: "http://www.centrometeolombardo.com/moduli/stazioni.php?lema"
-        destination: screenshot.png
+        destination: screenshot-${{ matrix.width }}.png
+        width: ${{ matrix.width }}
+        full-page: true
 
     - name: Download screenshot from last step
       uses: actions/download-artifact@v1
       with:
-        name: screenshot
+        name: screenshots
+        path: screenshot-${{ matrix.width }}.png
 
     - uses: stefanzweifel/git-auto-commit-action@v4.1.1
       with:
