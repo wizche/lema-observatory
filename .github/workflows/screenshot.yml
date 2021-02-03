@@ -11,7 +11,7 @@ jobs:
   # This workflow contains a single job called "build"
   take:
     # The type of runner that the job will run on
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -21,6 +21,7 @@ jobs:
         source: "http://www.centrometeolombardo.com/moduli/stazioni.php?lema"
         destination: screenshot.png
         full-page: true
+        width: 1200
   persist:
     runs-on: ubuntu-latest
     needs: take
